@@ -13,7 +13,7 @@ let operators = {
       value: "/",
     },
   ],
-  operations: [
+  zeroAndDot: [
     {
       value: "0",
     },
