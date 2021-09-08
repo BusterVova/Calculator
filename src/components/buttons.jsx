@@ -1,7 +1,7 @@
 import React from "react";
 import operators from "../operators";
 
-const Buttons = ({ clickedNumber, clickedOperation }) => {
+const Buttons = ({ clickedNumber, setDefaultValue, showResult }) => {
   return (
     <div className="buttons">
       <div className="operators">
@@ -63,7 +63,7 @@ const Buttons = ({ clickedNumber, clickedOperation }) => {
             <button
               id={el.value}
               key={el.value}
-              onClick={() => clickedOperation(el.value)}
+              onClick={() => setDefaultValue(el.value)}
             >
               {el.value}
             </button>
@@ -76,7 +76,7 @@ const Buttons = ({ clickedNumber, clickedOperation }) => {
           id={el.value}
           className="equal"
           key={el.value}
-          onClick={() => clickedOperation(el.value)}
+          onClick={() => showResult(el.value)}
         >
           {el.value}
         </button>

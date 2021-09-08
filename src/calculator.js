@@ -6,29 +6,24 @@ import Buttons from "./components/buttons";
 import "./App.css";
 
 const Calculator = () => {
-  const [state, setState] = useState({
-    out: "0",
-  });
+  const [state, setState] = useState("0");
 
   const clickedNumber = (value) => {
-    if (state.out === "0") {
-      setState({ out: "" });
+    if (state === "0") {
+      setState("");
     }
-    setState((prevState) => ({
-      out: prevState.out + value,
-    }));
+    setState((prevState) => prevState + value);
   };
 
-  const clickedOperation = (value) => {
+  const setDefaultValue = (value) => {
     if (value === "AC") {
-      setState({
-        out: "0",
-      });
-    } else if (value === "=") {
+      setState("0");
+    }
+  };
+  const showResult = (value) => {
+    if (value === "=") {
       try {
-        setState({
-          out: eval(state.out),
-        });
+        setState(eval(state));
       } catch {
         alert("Неккоректные данные");
       }
@@ -37,10 +32,11 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
-      <Input value={state.out} />
+      <Input value={state} />
       <Buttons
         clickedNumber={clickedNumber}
-        clickedOperation={clickedOperation}
+        setDefaultValue={setDefaultValue}
+        showResult={showResult}
       />
     </div>
   );
